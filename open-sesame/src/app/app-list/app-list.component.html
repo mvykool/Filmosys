@@ -1,1 +1,49 @@
-<p>app-list works!</p>
+<section class="container w-10/12 mx-auto border-4 border-black bg-white my-10 p-5">
+    <h1 class="font-bold">open sesame</h1>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae rerum perferendis ab tempore, in nobis sequi assumenda! Dignissimos, molestiae quidem.</p>
+    <button class="p-2 bg-blue-900 text-white rounded-lg text-sm my-5">Add new Site</button>
+
+    <!--form -->
+
+    <form class="w-full flex flex-col items-center">
+        <h2 class="text-lg font-semibold">add new site</h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, animi!</p>
+
+        <div class="w-8/12  mx-auto flex-col flex  ">
+            <label>Site Name</label>
+            <input type="text" name="siteName" class="border-2 border-black">
+            <label>Site URL</label>
+            <input type="text" name="siteUrl" class="border-2 border-black">
+            <label>Image URL</label>
+            <input type="text" name="imageUrl" class="border-2 border-black">
+        </div>
+
+        <div class="flex justify-between gap-20">
+            <button class="p-2 bg-blue-900 text-white rounded-lg text-sm my-5">Add new Site</button>
+            <button class="p-2 bg-red-600 text-white rounded-lg text-sm my-5">cancel</button>
+        </div>
+    </form>
+
+    <!--grid of sites-->
+
+    <div class="grid grid-cols-4 gap-5">
+        <div class="shadow-lg border-2 border-gray-900 pb-5">
+            <img src="https://fiverr-res.cloudinary.com/npm-assets/layout-server/fiverr-og-logo.5fd6463.png" alt="godady">
+
+            <h3 class="font-bold">fiverr</h3>
+
+            <div class="w-60 m-3 bg-blue-100 text-blue-950 text-sm rounded-lg">
+                https//fiverr.com
+            </div>
+
+            <button class="rounded-lg p-2 bg-blue-950 text-white">add new password</button>
+
+            <button class="rounded-lg p-2 bg-green-400 text-white">edit</button>
+
+            <button class="rounded-lg p-2 bg-red-700 text-white">delete</button>
+
+        </div>
+
+    </div>
+
+</section>
