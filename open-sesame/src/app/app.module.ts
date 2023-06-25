@@ -7,10 +7,18 @@ import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideAuth,getAuth } from '@angular/fire/auth';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
+import { NavbarComponent } from './navbar/navbar.component';
+import { AppListComponent } from './app-list/app-list.component';
+import { PasswordListComponent } from './password-list/password-list.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    NavbarComponent,
+    AppListComponent,
+    PasswordListComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
