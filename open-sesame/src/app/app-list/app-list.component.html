@@ -54,7 +54,7 @@
                 {{ site.siteUrl }}
             </div>
 
-            <button class="rounded-lg p-2 bg-blue-950 text-white">add new password</button>
+            <button routerLink="/password-list" [queryParams]="{id: site.id, siteName: site.siteName, url: site.siteUrl, img: site.imageUrl}" class="rounded-lg p-2 bg-blue-950 text-white">add new password</button>
 
             <button (click)="editSite(site.siteName, site.siteUrl, site.imageUrl, site.id)" class="rounded-lg p-2 bg-green-400 text-white">edit</button>
 

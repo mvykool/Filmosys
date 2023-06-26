@@ -30,5 +30,32 @@ export class OpenSesameService {
     const docInstance = doc(this.firestore, "sites", id);
 
     return deleteDoc(docInstance);
+    
+  }
+
+  //pasword queries
+
+  addPassword(data: object, siteId: string) {
+    const dbInstance = collection(this.firestore, `sites/${siteId}/password`);
+
+    return addDoc(dbInstance, data);
+  }
+
+  loadPassword(siteId: string){
+    const dbInstance = collection(this.firestore, `sites/${siteId}/password`);
+
+    return collectionData(dbInstance, {idField : 'id'});
+  }
+
+  updatePassword(siteId: string, passwordId: string, data: object) {
+    const docInstance = doc(this.firestore, `sites/${siteId}/password`, passwordId);
+
+    return updateDoc(docInstance, data);
+  }
+
+  deletePassword(siteId: string, passwordId: string){
+    const  docInstance = doc(this.firestore, `sites/${siteId}/password`, passwordId);
+
+    return deleteDoc(docInstance);
   }
 }
