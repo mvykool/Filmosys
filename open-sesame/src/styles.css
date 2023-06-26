@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 body {
-    background: #0e0463;
+    background: #080202;
     width: 100vw;
     overflow-x: hidden;
 }
