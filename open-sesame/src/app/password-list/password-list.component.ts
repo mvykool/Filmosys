@@ -3,6 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import { OpenSesameService } from '../service/open-sesame.service';
 import { Observable } from 'rxjs';
 
+import { AES, enc } from 'crypto-js';
+
 @Component({
   selector: 'app-password-list',
   templateUrl: './password-list.component.html',
@@ -17,7 +19,7 @@ export class PasswordListComponent {
   imageUrl !: string;
 
 
-  passwordList !: Observable<Array<any>>;
+  passwordList !: Array<any>;
 
 
   //global variables to show in the form
@@ -60,7 +62,11 @@ export class PasswordListComponent {
     this.passwordId = "";
   }
 
-  onSubmit(value: object){
+  onSubmit(value: any){
+
+    const encryptedPassword = this.encryptPassword(value.password);
+
+    value.password = encryptedPassword;
     
     if(this.formState == 'Add new'){
       this.openSesame.addPassword(value, this.siteId)
@@ -85,7 +91,9 @@ export class PasswordListComponent {
   }
 
   loadPassword(){
-    this.passwordList = this.openSesame.loadPassword(this.siteId)
+    this.openSesame.loadPassword(this.siteId).subscribe(val => {
+      this.passwordList = val;
+    })
   }
 
 
@@ -107,5 +115,26 @@ export class PasswordListComponent {
     .catch(err => {
       console.log(err)
     })
+  }
+
+
+  encryptPassword(password: string){
+    const secretKey = "0gACTbHPrW";
+    const encryptedPassword = AES.encrypt(password, secretKey).toString();
+
+    return encryptedPassword;
+  }
+
+  decryptPassword(password: string){
+    const secretKey = "0gACTbHPrW";
+    const decPassword = AES.decrypt(password, secretKey).toString(enc.Utf8);
+
+    return decPassword;
+  }
+
+  onDecrypt(password: string, index: number){
+    const decPassword = this.decryptPassword(password);
+
+    this.passwordList[index].password = decPassword;
   }
 }
