@@ -1,1 +1,15 @@
-<p>login works!</p>
+<section class="h-screen w-screen p-20">
+
+    <div *ngIf="isError" class="bg-red-200 text-red-900">
+        Wrong password or email
+    </div>
+
+    <form #f="ngForm" (ngSubmit)="onSubmit(f.value)">
+        <div>
+            <input ngModel type="email" placeholder="email@" name="email">
+            <input ngModel type="password" placeholder="****" name="password">
+        </div>
+
+        <button>sign in</button>
+    </form>
+</section>
