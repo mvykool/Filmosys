@@ -22,6 +22,16 @@ export class AppListComponent {
 
   formState: string = "Add New";
 
+  //create popup
+
+  isSuccess = false;
+  succesMessage !: string;
+
+  showAlert(message: string){
+    this.isSuccess = true;
+    this.succesMessage = message;
+  }
+
 
   //contructor, get service, and call queries
 
@@ -37,7 +47,7 @@ export class AppListComponent {
     if(this.formState === "Add New"){
       this.openSesame.addSite(values)
       .then(() => {
-        console.log("data saved successfully");
+        this.showAlert("Data Saved!");
       })
       .catch(err => {
         console.log(err)
@@ -46,7 +56,7 @@ export class AppListComponent {
     else if(this.formState === "Edit"){
       this.openSesame.updateSite(this.siteId, values)
       .then(() => {
-        console.log("data updated successfully");
+        this.showAlert("Data Updated!");
       })
       .catch(err => {
         console.log(err)
@@ -74,7 +84,7 @@ export class AppListComponent {
   deleteSite(id :string){
     this.openSesame.deleteSite(id)
     .then(() => {
-      console.log("data deleted successfully");
+      this.showAlert("Data Deleted!");
     })
     .catch(err => {
       console.log(err)

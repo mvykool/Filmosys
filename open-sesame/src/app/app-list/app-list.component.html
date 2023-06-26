@@ -5,7 +5,15 @@
 
     <!--form -->
 
+
+    <div *ngIf="isSuccess" class="p-5 my.3 bg-teal-100 text-teal-950">
+        {{ succesMessage }}
+    </div>
+
+
+
     <form #f="ngForm" (ngSubmit)="onSubmit(f.value)" class="w-full flex flex-col items-center">
+
         <h2 class="text-lg font-semibold">{{ formState }} site</h2>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, animi!</p>
 
@@ -34,6 +42,7 @@
     </form>
 
     <!--grid of sites-->
+
 
     <div class="grid grid-cols-4 gap-5">
         <div *ngFor="let site of allSites | async" class="shadow-lg border-2 border-gray-900 pb-5">
