@@ -18,6 +18,10 @@ export class AppListComponent {
   imageUrl !: string;
   siteId!: string;
 
+  //state of name's from
+
+  formState: string = "Add New";
+
 
   //contructor, get service, and call queries
 
@@ -28,15 +32,26 @@ export class AppListComponent {
   //storing data
 
   onSubmit(values:object){
-    console.log(values);
+    
 
-    this.openSesame.addSite(values)
-    .then(() => {
-      console.log("data saved successfully");
-    })
-    .catch(err => {
-      console.log(err)
-    });
+    if(this.formState === "Add New"){
+      this.openSesame.addSite(values)
+      .then(() => {
+        console.log("data saved successfully");
+      })
+      .catch(err => {
+        console.log(err)
+      });
+    }
+    else if(this.formState === "Edit"){
+      this.openSesame.updateSite(this.siteId, values)
+      .then(() => {
+        console.log("data updated successfully");
+      })
+      .catch(err => {
+        console.log(err)
+      });
+    }
   }
 
   //getting data
@@ -52,6 +67,18 @@ export class AppListComponent {
       this.siteUrl = siteUrl;
       this.imageUrl = imageUrl;
       this.siteId = id;
+
+      this.formState = "Edit";
+  }
+
+  deleteSite(id :string){
+    this.openSesame.deleteSite(id)
+    .then(() => {
+      console.log("data deleted successfully");
+    })
+    .catch(err => {
+      console.log(err)
+    });
   }
 
 }
