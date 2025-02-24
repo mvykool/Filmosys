@@ -1,0 +1,22 @@
+<header>
+  <nav class="nav-header">
+    <div>Hotel MK</div>
+    <ul class="nav-header-middle">
+      @for (link of navLinks; track link) {
+        <li>{{ link }}</li>
+      }
+    </ul>
+    <div>
+      @if (isLoggedIn) {
+        <ng-container>
+          <span>{{ userName }}</span>
+          <button (click)="logout()">Logout</button>
+        </ng-container>
+      } @else {
+        <ng-template>
+          <button (click)="login()">Login</button>
+        </ng-template>
+      }
+    </div>
+  </nav>
+</header>

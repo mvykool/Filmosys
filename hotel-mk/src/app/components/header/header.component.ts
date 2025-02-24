@@ -9,26 +9,13 @@ import { FirebaseService } from '../../core/services/firebase/firebase.service';
   selector: 'app-header',
   standalone: true,
   imports: [CommonModule],
-  template: `
-    <header>
-      <nav>
-        <div>Hotel MK</div>
-        <div>
-          <ng-container *ngIf="isLoggedIn; else loginButton">
-            <span>{{ userEmail }}</span>
-            <button (click)="logout()">Logout</button>
-          </ng-container>
-          <ng-template #loginButton>
-            <button (click)="login()">Login</button>
-          </ng-template>
-        </div>
-      </nav>
-    </header>
-  `,
+  templateUrl: 'header.component.html',
+  styleUrl: 'header.component.scss',
 })
 export class HeaderComponent implements OnInit {
   isLoggedIn = false;
-  userEmail: string | null = null;
+  userName: string | null = null;
+  navLinks: string[] = ['Home', 'Blog', 'About', 'more'];
 
   constructor(
     private auth: Auth,
@@ -37,10 +24,9 @@ export class HeaderComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    // Subscribe to auth state changes
     authState(this.auth).subscribe((user) => {
       this.isLoggedIn = !!user;
-      this.userEmail = user?.email ?? null;
+      this.userName = user?.displayName ?? null;
     });
   }
 
