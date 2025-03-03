@@ -5,7 +5,7 @@
       @if (isLoggedIn) {
         <ng-container>
           <div class="nav-right-section">
-            <input type="search" />
+            <app-search />
 
             <button class="user-profile-btn" (click)="dropDown()">
               <img src="{{ pic }}" alt="{{ userName }}" />

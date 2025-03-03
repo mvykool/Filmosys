@@ -1,0 +1,16 @@
+.search-container {
+  border: 1px white solid;
+  display: flex;
+  align-items: center;
+  height: 1.8rem;
+  padding: 0 0.4rem;
+  border-radius: 0.6rem;
+
+  input {
+    height: 100%;
+    width: 100%;
+    outline: 0;
+    border: 0;
+    background: transparent;
+  }
+}

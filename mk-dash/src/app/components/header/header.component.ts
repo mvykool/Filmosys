@@ -4,11 +4,12 @@ import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { Auth, authState } from '@angular/fire/auth';
 import { FirebaseService } from '../../core/services/firebase/firebase.service';
+import { SearchComponent } from './search/search.component';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, SearchComponent],
   templateUrl: 'header.component.html',
   styleUrl: 'header.component.scss',
 })
