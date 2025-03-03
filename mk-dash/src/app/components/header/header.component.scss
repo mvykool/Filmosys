@@ -5,19 +5,31 @@ header {
 
 .nav-header {
   position: relative;
-  justify-content: space-around;
+  justify-content: space-between;
+  padding: 0 5rem;
   align-items: center;
   display: flex;
   width: 100%;
 
+
+  .logo {
+    background-color: #6A9C89;
+    letter-spacing: 0.1rem;
+    padding: 0.3rem;
+    border-radius: 0.4rem;
+    color: white;
+  }
+
   .nav-right-section {
     display: flex;
+    gap: 1rem;
     align-items: center;
   }
 
   .user-profile-btn {
     background-color: transparent;
     outline: none;
+    cursor: pointer;
     border: 0;
 
     img {

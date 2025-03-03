@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { Auth, authState } from '@angular/fire/auth';
 import { FirebaseService } from '../../core/services/firebase/firebase.service';
 import { SearchComponent } from './search/search.component';
+import { strings, Strings } from '../../utils/constants';
 
 @Component({
   selector: 'app-header',
@@ -15,6 +16,8 @@ import { SearchComponent } from './search/search.component';
 })
 export class HeaderComponent implements OnInit {
   isLoggedIn: boolean = false;
+  customStrings: Strings = strings;
+
   userName: string | null = null;
   pic: string | null = null;
 
