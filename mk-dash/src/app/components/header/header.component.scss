@@ -24,6 +24,29 @@ header {
     display: flex;
     gap: 1rem;
     align-items: center;
+    position: relative;
+
+    .nav-dropdown {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      border: 1px solid white;
+      border-radius: 0.4rem;
+      padding: 0.5rem;
+      min-width: 150px;
+      z-index: 1000;
+
+      button {
+        margin: 0 auto;
+        background-color: transparent;
+        border: 1px solid white;
+        color: white;
+        border-radius: 0.4rem;
+        padding: 0.5rem;
+        display: flex;
+        justify-content: center;
+      }
+    }
   }
 
   .user-profile-btn {

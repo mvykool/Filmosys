@@ -1,5 +1,5 @@
 // src/app/components/header/header.component.ts
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { Auth, authState } from '@angular/fire/auth';
@@ -47,6 +47,28 @@ export class HeaderComponent implements OnInit {
     this.router.navigate(['/login']);
   }
 
+  @HostListener('document:click', ['$event'])
+  onDocumentClick(event: MouseEvent) {
+    if (!this.dropdown) {
+      return;
+    }
+
+    // Get references to the clicked element
+    const targetElement = event.target as HTMLElement;
+
+    // Check if the click was on the profile button or its children (like the image)
+    const profileButton = document.querySelector('.user-profile-btn');
+    const isProfileButtonClick = profileButton?.contains(targetElement);
+
+    // Check if the click was inside the dropdown
+    const dropdownMenu = document.querySelector('.nav-dropdown');
+    const isDropdownClick = dropdownMenu?.contains(targetElement);
+
+    // If the click wasn't on the profile button or inside the dropdown, close it
+    if (!isProfileButtonClick && !isDropdownClick) {
+      this.dropdown = false;
+    }
+  }
   dropDown(): boolean {
     return (this.dropdown = !this.dropdown);
   }
