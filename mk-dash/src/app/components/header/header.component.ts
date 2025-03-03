@@ -13,9 +13,12 @@ import { FirebaseService } from '../../core/services/firebase/firebase.service';
   styleUrl: 'header.component.scss',
 })
 export class HeaderComponent implements OnInit {
-  isLoggedIn = false;
+  isLoggedIn: boolean = false;
   userName: string | null = null;
-  navLinks: string[] = ['Home', 'Blog', 'About', 'more'];
+  pic: string | null = null;
+
+  dropdown: boolean = false;
+  pokemons: any = [];
 
   constructor(
     private auth: Auth,
@@ -27,6 +30,7 @@ export class HeaderComponent implements OnInit {
     authState(this.auth).subscribe((user) => {
       this.isLoggedIn = !!user;
       this.userName = user?.displayName ?? null;
+      this.pic = user?.photoURL ?? null;
     });
   }
 
@@ -37,5 +41,9 @@ export class HeaderComponent implements OnInit {
   async logout() {
     await this.firebaseService.signOut();
     this.router.navigate(['/login']);
+  }
+
+  dropDown(): boolean {
+    return (this.dropdown = !this.dropdown);
   }
 }

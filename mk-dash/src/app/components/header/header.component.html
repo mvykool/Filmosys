@@ -1,16 +1,22 @@
 <header>
   <nav class="nav-header">
-    <div>Hotel MK</div>
-    <ul class="nav-header-middle">
-      @for (link of navLinks; track link) {
-        <li>{{ link }}</li>
-      }
-    </ul>
+    <p>Filmosys</p>
     <div>
       @if (isLoggedIn) {
         <ng-container>
-          <span>{{ userName }}</span>
-          <button (click)="logout()">Logout</button>
+          <div class="nav-right-section">
+            <input type="search" />
+
+            <button class="user-profile-btn" (click)="dropDown()">
+              <img src="{{ pic }}" alt="{{ userName }}" />
+            </button>
+
+            @if (dropdown) {
+              <div class="nav-dropdown">
+                <button (click)="logout()">Logout</button>
+              </div>
+            }
+          </div>
         </ng-container>
       } @else {
         <ng-template>

@@ -10,10 +10,20 @@ header {
   display: flex;
   width: 100%;
 
-  &-middle {
+  .nav-right-section {
     display: flex;
     align-items: center;
-    gap: 2rem;
-    list-style: none;
+  }
+
+  .user-profile-btn {
+    background-color: transparent;
+    outline: none;
+    border: 0;
+
+    img {
+      height: 3rem;
+      width: 3rem;
+      border-radius: 50%;
+    }
   }
 }

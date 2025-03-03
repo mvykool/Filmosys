@@ -3,7 +3,6 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map, retry } from 'rxjs/operators';
 import { Task } from '../models/task.model';
-import { updateTask } from '../store/tasks/tasks.actions';
 
 @Injectable({
   providedIn: 'root',
