@@ -1,0 +1,6 @@
+<p>hero works!</p>
+@if (movies()) {
+  @for (movie of movies(); track movie.id) {
+    <p>{{ movie.title }}</p>
+  }
+}
