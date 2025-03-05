@@ -1,0 +1,11 @@
+h3 {
+  margin: 4rem 0;
+  font-size: 30px;
+}
+
+.popular {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  z-index: 700;
+}

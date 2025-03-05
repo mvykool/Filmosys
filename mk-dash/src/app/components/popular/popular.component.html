@@ -1,0 +1,9 @@
+<h3>Popular right now 🔥</h3>
+<div class="popular">
+  @for (movie of movies().slice(7, 20); track movie.id) {
+    <app-movie-card
+      title="{{ movie.title }}"
+      filmBanner="{{ movie.backdrop_path }}"
+    />
+  }
+</div>

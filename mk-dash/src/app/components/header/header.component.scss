@@ -36,6 +36,7 @@ header {
       padding: 0.5rem;
       min-width: 150px;
       z-index: 1000;
+      background-color: black;
 
       button {
         margin: 0 auto;
@@ -46,6 +47,7 @@ header {
         padding: 0.5rem;
         display: flex;
         justify-content: center;
+
       }
     }
   }

@@ -2,13 +2,14 @@
   @if (movies()) {
     <img [src]="selectedMovieBanner()" alt="" />
     <div class="banner-shadow">
-      @for (movie of movies(); track movie.id) {
+      @for (movie of movies().slice(0, 7); track movie.id) {
         <app-movie-card
           title="{{ movie.title }}"
           filmBanner="{{ movie.backdrop_path }}"
           (selected)="onMovieSelected($event)"
         />
       }
+      <app-popular />
     </div>
     <h2>{{ selectedMovieTitle() }}</h2>
   }

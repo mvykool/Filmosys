@@ -5,12 +5,18 @@
   height: 1.8rem;
   padding: 0 0.4rem;
   border-radius: 0.6rem;
+  background-color: rgba(0, 0, 0, 0.5);
+
 
   input {
     height: 100%;
     width: 100%;
     outline: 0;
     border: 0;
-    background: transparent;
+    background-color: transparent;
+  }
+
+  input::placeholder {
+    color: white;
   }
 }
