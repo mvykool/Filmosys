@@ -14,6 +14,7 @@ export class HeroComponent {
   movies: Signal<any> = toSignal(this.movieService.getPopularMovies());
 
   selectedMovieBanner = signal<string>('');
+  selectedMovieTitle = signal<string | undefined>('');
 
   constructor() {
     this.setInitialBackground();
@@ -26,6 +27,7 @@ export class HeroComponent {
         // Set the first movie as the default background
         const firstMovie = moviesData[0];
         if (firstMovie && firstMovie.backdrop_path) {
+          this.selectedMovieTitle.set(firstMovie.title);
           this.selectedMovieBanner.set(
             `https://image.tmdb.org/t/p/original/${firstMovie.backdrop_path}`,
           );
@@ -34,8 +36,12 @@ export class HeroComponent {
     });
   }
 
-  onMovieSelected(movieData: { banner: string | undefined }): void {
+  onMovieSelected(movieData: {
+    title: string | undefined;
+    banner: string | undefined;
+  }): void {
     // Set the selected movie banner
+    this.selectedMovieTitle.set(movieData.title);
     this.selectedMovieBanner.set(
       `https://image.tmdb.org/t/p/original/${movieData.banner}`,
     );

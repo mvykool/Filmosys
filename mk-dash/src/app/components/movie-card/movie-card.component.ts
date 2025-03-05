@@ -8,9 +8,12 @@ import { Component, input, OnInit, output, signal } from '@angular/core';
   styleUrl: './movie-card.component.scss',
 })
 export class MovieCardComponent implements OnInit {
-  title = input<string>(); // Signal<string|undefined>
+  title = input<string | undefined>(); // Signal<string|undefined>
   filmBanner = input<string>();
-  selected = output<{ banner: string | undefined }>();
+  selected = output<{
+    title: string | undefined;
+    banner: string | undefined;
+  }>();
 
   fullImageUrl = signal<string>('');
 
@@ -19,7 +22,7 @@ export class MovieCardComponent implements OnInit {
   }
 
   onSelect(): void {
-    this.selected.emit({ banner: this.filmBanner() });
+    this.selected.emit({ title: this.title(), banner: this.filmBanner() });
   }
 
   generatePosterUrl(): void {
