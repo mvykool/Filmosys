@@ -9,11 +9,27 @@ import { environment } from '../../environments/environment';
 })
 export class MovieService {
   private apiUrl: string = environment.apiUrl;
+  private apiUrlTrend: string = environment.apiUrlTrend;
   httpClient = inject(HttpClient);
 
   getPopularMovies(): Observable<any> {
     return this.httpClient
       .get<any>(this.apiUrl, {
+        headers: {
+          accept: 'application/json',
+          Authorization: environment.apikey,
+        },
+      })
+      .pipe(
+        retry(2),
+        map((movie) => movie.results),
+        catchError(this.handleError),
+      );
+  }
+
+  getPopularMoviesTrend(): Observable<any> {
+    return this.httpClient
+      .get<any>(this.apiUrlTrend, {
         headers: {
           accept: 'application/json',
           Authorization: environment.apikey,

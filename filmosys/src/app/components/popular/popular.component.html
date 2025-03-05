@@ -1,9 +1,13 @@
 <h3>Popular right now 🔥</h3>
-<div class="popular">
-  @for (movie of movies().slice(7, 20); track movie.id) {
-    <app-movie-card
-      title="{{ movie.title }}"
-      filmBanner="{{ movie.backdrop_path }}"
-    />
-  }
-</div>
+@defer (on viewport) {
+  <div class="popular">
+    @for (movie of movies(); track movie.id) {
+      <app-movie-card
+        title="{{ movie.title }}"
+        filmBanner="{{ movie.poster_path }}"
+      />
+    }
+  </div>
+} @placeholder {
+  <p>loading....</p>
+}
