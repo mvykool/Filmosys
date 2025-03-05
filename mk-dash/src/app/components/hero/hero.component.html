@@ -1,13 +1,14 @@
 <main class="main-hero">
   @if (movies()) {
     <img [src]="selectedMovieBanner()" alt="" />
-    @for (movie of movies(); track movie.id) {
-      <div class="banner"></div>
-      <app-movie-card
-        title="{{ movie.title }}"
-        filmBanner="{{ movie.backdrop_path }}"
-        (selected)="onMovieSelected($event)"
-      />
-    }
+    <div class="banner-shadow">
+      @for (movie of movies(); track movie.id) {
+        <app-movie-card
+          title="{{ movie.title }}"
+          filmBanner="{{ movie.backdrop_path }}"
+          (selected)="onMovieSelected($event)"
+        />
+      }
+    </div>
   }
 </main>

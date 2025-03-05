@@ -16,7 +16,6 @@ export class HeroComponent {
   selectedMovieBanner = signal<string>('');
 
   constructor() {
-    // Set initial background from first movie once data is loaded
     this.setInitialBackground();
   }
 

@@ -21,7 +21,7 @@ export class MovieService {
       })
       .pipe(
         retry(2),
-        map((movie) => movie.results.slice(0, 8)),
+        map((movie) => movie.results.slice(0, 7)),
         catchError(this.handleError),
       );
   }
