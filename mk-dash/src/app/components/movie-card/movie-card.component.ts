@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, input, OnInit, signal } from '@angular/core';
+import { Component, input, OnInit, output, signal } from '@angular/core';
 
 @Component({
   selector: 'app-movie-card',
@@ -10,11 +10,16 @@ import { Component, input, OnInit, signal } from '@angular/core';
 export class MovieCardComponent implements OnInit {
   title = input<string>(); // Signal<string|undefined>
   filmBanner = input<string>();
+  selected = output<{ banner: string | undefined }>();
 
   fullImageUrl = signal<string>('');
 
   ngOnInit(): void {
     this.generatePosterUrl();
+  }
+
+  onSelect(): void {
+    this.selected.emit({ banner: this.filmBanner() });
   }
 
   generatePosterUrl(): void {
