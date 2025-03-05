@@ -1,6 +1,10 @@
 <header>
   <nav class="nav-header">
-    <p class="logo">{{ customStrings.header.logo }}</p>
+    <p class="logo">
+      <img src="filmosys.png" class="logo-img" alt="" />
+
+      {{ customStrings.header.logo }}
+    </p>
     <div>
       @if (isLoggedIn) {
         <ng-container>

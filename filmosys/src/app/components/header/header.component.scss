@@ -15,6 +15,9 @@ header {
 
   .logo {
     background-color: #A31D1D;
+    display: flex;
+    gap: 0.3rem;
+    align-items: center;
     letter-spacing: 0.1rem;
     padding: 0.3rem;
     border-radius: 0.4rem;
@@ -64,4 +67,10 @@ header {
       border-radius: 50%;
     }
   }
+}
+
+.logo-img {
+  height: 1.8rem;
+  width: 1.8rem;
+  transform: rotate(-10deg);
 }
