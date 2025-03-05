@@ -13,7 +13,8 @@ import { PopularComponent } from '../popular/popular.component';
 export class HeroComponent {
   movieService = inject(MovieService);
   movies: Signal<any> = toSignal(this.movieService.getPopularMovies());
-
+  isChanging = signal<boolean>(false);
+  isTitleChanging = signal<boolean>(false);
   selectedMovieBanner = signal<string>('');
   selectedMovieTitle = signal<string | undefined>('');
 
@@ -38,13 +39,36 @@ export class HeroComponent {
   }
 
   onMovieSelected(movieData: {
-    title: string | undefined;
     banner: string | undefined;
+    title: string | undefined;
   }): void {
-    // Set the selected movie banner
-    this.selectedMovieTitle.set(movieData.title);
-    this.selectedMovieBanner.set(
-      `https://image.tmdb.org/t/p/original/${movieData.banner}`,
-    );
+    if (movieData && movieData.banner) {
+      // Start both animations
+      this.isChanging.set(true);
+      this.isTitleChanging.set(true);
+
+      // Fade out the title
+      setTimeout(() => {
+        // Update the movie title
+        this.selectedMovieTitle.set(movieData.title);
+
+        // Let the title fade back in after a short delay
+        setTimeout(() => {
+          this.isTitleChanging.set(false);
+        }, 100);
+      }, 250); // Wait a bit before changing the title
+
+      // Handle background image change
+      setTimeout(() => {
+        this.selectedMovieBanner.set(
+          `https://image.tmdb.org/t/p/original/${movieData.banner}`,
+        );
+
+        // Let the new image fade in
+        setTimeout(() => {
+          this.isChanging.set(false);
+        }, 50);
+      }, 300);
+    }
   }
 }

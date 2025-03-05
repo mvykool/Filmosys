@@ -8,6 +8,32 @@
     z-index: 100;
     font-size: 45px;
     letter-spacing: 2px;
+    transition: all 0.2s ease;
+    position: relative;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+
+    transform: translateY(0);
+    opacity: 1;
+
+    &.title-changing {
+      transform: translateY(10px);
+      opacity: 0;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 5rem;
+      width: 0;
+      height: 3px;
+      background-color: #A31D1D;
+      transition: width 0.1s ease;
+    }
+
+    &:not(.title-changing)::after {
+      width: 10rem;
+    }
   }
 
   img {
@@ -15,6 +41,12 @@
     width: 100vw;
     top: 0;
     left: 0;
+    transition: opacity 0.8s ease;
+    opacity: 1;
+
+    &.fade-out {
+      opacity: 0;
+    }
   }
 
   .banner-shadow {

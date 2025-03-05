@@ -1,6 +1,6 @@
 <main class="main-hero">
   @if (movies()) {
-    <img [src]="selectedMovieBanner()" alt="" />
+    <img [src]="selectedMovieBanner()" alt="" [class.fade-out]="isChanging()" />
     <div class="banner-shadow">
       @for (movie of movies().slice(0, 7); track movie.id) {
         <app-movie-card
@@ -11,6 +11,8 @@
       }
       <app-popular />
     </div>
-    <h2>{{ selectedMovieTitle() }}</h2>
+    <h2 [class.title-changing]="isTitleChanging()">
+      {{ selectedMovieTitle() }}
+    </h2>
   }
 </main>
