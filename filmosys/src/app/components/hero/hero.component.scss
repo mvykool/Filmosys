@@ -5,7 +5,7 @@
   h2 {
     position: absolute;
     padding-left: 5rem;
-    top: 25%;
+    top: 20%;
     color: white;
     z-index: 100;
     width: 40%;
@@ -27,8 +27,8 @@
       position: absolute;
       bottom: -10px;
       left: 5rem;
-      width: 0;
       height: 3px;
+      width: 0;
       background-color: #A31D1D;
       transition: width 0.1s ease;
     }
@@ -36,6 +36,36 @@
     &:not(.title-changing)::after {
       width: 10rem;
     }
+  }
+
+  .des {
+    color: white;
+    font-size: 15px;
+    background-color: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(10px);
+    top: 38%;
+    position: absolute;
+    z-index: 400;
+    width: 35%;
+    margin-left: 5rem;
+    padding: 1rem;
+    border-radius: 0.4rem;
+    letter-spacing: 1px;
+    transition: all 0.2s ease;
+    transform: translateY(0);
+    opacity: 1;
+
+    &.title-changing {
+      transform: translateY(10px);
+      opacity: 0;
+    }
+
+    .vote {
+      display: flex;
+      align-items: center;
+      gap: 0.2rem;
+    }
+
   }
 
   img {

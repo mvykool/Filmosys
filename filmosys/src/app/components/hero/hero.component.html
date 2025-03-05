@@ -2,6 +2,15 @@
   <h2 [class.title-changing]="isTitleChanging()">
     {{ selectedMovieTitle() }}
   </h2>
+  <div class="des" [class.title-changing]="isTitleChanging()">
+    <div class="vote">
+      <i class="bx bx-star"></i>
+      <span [class.title-changing]="isTitleChanging()">{{
+        selectedMovieVote()
+      }}</span>
+    </div>
+    <p>{{ selectedMovieOverview() }}</p>
+  </div>
 
   @if (movies()) {
     <img [src]="selectedMovieBanner()" alt="" [class.fade-out]="isChanging()" />
@@ -10,6 +19,8 @@
         <app-movie-card
           title="{{ movie.title }}"
           filmBanner="{{ movie.backdrop_path }}"
+          overview="{{ movie.overview }}"
+          vote="{{ movie.vote_average }}"
           (selected)="onMovieSelected($event)"
         />
       }

@@ -17,6 +17,8 @@ export class HeroComponent {
   isTitleChanging = signal<boolean>(false);
   selectedMovieBanner = signal<string>('');
   selectedMovieTitle = signal<string | undefined>('');
+  selectedMovieVote = signal<string | undefined>('');
+  selectedMovieOverview = signal<string | undefined>('');
 
   constructor() {
     this.setInitialBackground();
@@ -30,6 +32,9 @@ export class HeroComponent {
         const firstMovie = moviesData[0];
         if (firstMovie && firstMovie.backdrop_path) {
           this.selectedMovieTitle.set(firstMovie.title);
+          this.selectedMovieOverview.set(firstMovie.overview);
+          const voteValue = parseFloat(firstMovie.vote_average);
+          this.selectedMovieVote.set(voteValue.toFixed(1));
           this.selectedMovieBanner.set(
             `https://image.tmdb.org/t/p/original/${firstMovie.backdrop_path}`,
           );
@@ -41,6 +46,8 @@ export class HeroComponent {
   onMovieSelected(movieData: {
     banner: string | undefined;
     title: string | undefined;
+    overview: string | undefined;
+    vote: string | undefined;
   }): void {
     if (movieData && movieData.banner) {
       // Start both animations
@@ -51,6 +58,11 @@ export class HeroComponent {
       setTimeout(() => {
         // Update the movie title
         this.selectedMovieTitle.set(movieData.title);
+        this.selectedMovieOverview.set(movieData.overview);
+        if (movieData.vote) {
+          const voteValue = parseFloat(movieData.vote);
+          this.selectedMovieVote.set(voteValue.toFixed(1));
+        }
 
         // Let the title fade back in after a short delay
         setTimeout(() => {
