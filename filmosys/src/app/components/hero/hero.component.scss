@@ -1,15 +1,16 @@
 .main-hero {
   display: flex;
-  margin-top: 20%;
+  margin-top: 25%;
 
   h2 {
+    position: absolute;
     padding-left: 5rem;
+    top: 25%;
     color: white;
     z-index: 100;
     font-size: 45px;
     letter-spacing: 2px;
     transition: all 0.2s ease;
-    position: relative;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
 
     transform: translateY(0);
@@ -57,11 +58,7 @@
     gap: 1rem;
     flex-wrap: wrap;
     display: flex;
-    background: linear-gradient(to top, #000 80%, transparent 100%);
+    background: linear-gradient(to top, #000 55%, transparent 100%);
     z-index: 100;
   }
-}
-
-.space {
-  height: 2000px;
 }

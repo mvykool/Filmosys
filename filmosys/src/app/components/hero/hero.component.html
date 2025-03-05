@@ -1,4 +1,8 @@
 <main class="main-hero">
+  <h2 [class.title-changing]="isTitleChanging()">
+    {{ selectedMovieTitle() }}
+  </h2>
+
   @if (movies()) {
     <img [src]="selectedMovieBanner()" alt="" [class.fade-out]="isChanging()" />
     <div class="banner-shadow">
@@ -11,8 +15,5 @@
       }
       <app-popular />
     </div>
-    <h2 [class.title-changing]="isTitleChanging()">
-      {{ selectedMovieTitle() }}
-    </h2>
   }
 </main>
