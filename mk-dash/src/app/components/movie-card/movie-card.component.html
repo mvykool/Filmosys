@@ -1,8 +1,4 @@
-<div
-  class="movie-card"
-  [ngStyle]="{ 'background-image': 'url(' + fullImageUrl() + ')' }"
->
-  <div class="backdrop">
-    <small>{{ title() }}</small>
-  </div>
+<div class="movie-card">
+  <img [src]="fullImageUrl()" alt="" />
+  <small>{{ title() }}</small>
 </div>

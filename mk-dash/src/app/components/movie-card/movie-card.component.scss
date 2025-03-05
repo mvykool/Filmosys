@@ -1,26 +1,27 @@
 .movie-card {
-  height: 10rem;
-  width: 10rem;
-  background-position: center;
-  background-size: cover;
-  border-radius: 0.4rem;
   position: relative;
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  width: 100%;
 
-  .backdrop {
-    background-color: rgba($color: #000, $alpha: 0.5);
-    height: 100%;
-    width: 100%;
+
+  img {
+    border-radius: 0.4rem;
+    height: 10rem;
+    width: 10rem;
+    background-position: center;
+    background-size: cover;
   }
 
-
   small {
-    position: absolute;
-    width: 100%;
+    white-space: normal;
+    position: relative;
     text-align: center;
+    word-wrap: break-word;
     padding: 0.4rem 0;
     font-size: 14px;
     bottom: 0;
+    max-width: 10rem;
   }
 }
