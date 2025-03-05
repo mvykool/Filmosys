@@ -11,5 +11,5 @@ import { MovieCardComponent } from '../movie-card/movie-card.component';
 })
 export class PopularComponent {
   movieService = inject(MovieService);
-  movies: Signal<any> = toSignal(this.movieService.getPopularMoviesTrend());
+  movies: Signal<any> = toSignal(this.movieService.getPopularMovies());
 }

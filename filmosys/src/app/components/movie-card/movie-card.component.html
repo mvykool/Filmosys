@@ -1,4 +1,4 @@
 <div class="movie-card" (click)="onSelect()">
-  <img [src]="fullImageUrl()" alt="" />
+  <img [src]="fullImageUrl()" [alt]="title()" />
   <small>{{ title() }}</small>
 </div>
